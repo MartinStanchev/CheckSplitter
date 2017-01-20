@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">CheckSplitter</string>
-    <string name="btnIntend">Take Picture</string>
-    <string name="cannot">Cannot</string>
-    <string name="album_name">CameraSample</string>
-</resources>
