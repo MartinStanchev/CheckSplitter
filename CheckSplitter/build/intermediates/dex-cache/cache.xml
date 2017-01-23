@@ -12,93 +12,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.rmtheis/tess-two/5.4.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="921b1c4306b10e7de53574523eb7f7144bd0707f">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.rmtheis-tess-two-5.4.1_57dfbd10a8a5333d5ffb0538218ba63b4e03a95b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="7a1acda0d64099a5777b58d78aa5a20ffca8c3f0">
+        sha1="5cf123843cc2bc300245df540259e671fa65ae8d">
         <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_34080b8131446f8dfd7a98f159cb3560e7bb3bde/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.0.1_9655a2a58724c19e9363d9c4b79a48fdd7d39ecc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.0.1_f392845ac3a34a3d15c8fe646e7dd659f00b0eff/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.1_5cfc8d7e95925503b707ea6c4592c8b185b972d0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="856a6c0eeb82587debfadbc5581930ff229bd0e6">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9f5bba9f374a18d032c8ec604bd3499e8d000bd9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="7fcb5951ae4d03b53439ea80486711ecc6e0e7f7">
-        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1d81ba18e5b8eeab6cc492574e9a20773f300600/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.0.1_ac015159e4f754b1b88d28f6fec75e330b98f250/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.0.1_67d044ff6c7ed98b2de2d2b44c3b2e0ce490a7be/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="bb0ac3f3ee2d71854501cc28e52cc84a20209b41">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v13-23.0.0_404218add979191378701f7345027215951f8961/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -120,21 +39,39 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="/home/marts/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.0.1_f392845ac3a34a3d15c8fe646e7dd659f00b0eff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.1_27c372d0818c9d6ac5bcfa8151bfa54fb5056233/classes.dex" />
+        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.1_5cfc8d7e95925503b707ea6c4592c8b185b972d0/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="b7d320c20031d2b3d3617994d4bdded86aa032e3">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_cdd3732420cc7f2e4b20baf569c63138899b83a1/classes.dex" />
+        sha1="e56b3e3e14f81bcf08e16e14e429493deaa69d94">
+        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1d81ba18e5b8eeab6cc492574e9a20773f300600/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.0.1_67d044ff6c7ed98b2de2d2b44c3b2e0ce490a7be/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -144,15 +81,6 @@
         revision="23.0.3"
         sha1="bb0ac3f3ee2d71854501cc28e52cc84a20209b41">
         <dex dex="/home/marts/AndroidStudioProjects/CheckSplitter/CheckSplitter/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v13-23.0.0_56040749ce0b105c31f88c9c8de30616b7737f48/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/exploded-aar/com.android.support/support-v13/23.0.0/jars/libs/internal_impl-23.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.3"
-        sha1="5d4bccb885c8a89d066ecb6c4addb553a99a79a2">
-        <dex dex="/home/marts/AndroidStudioProjects/Tess-two_example/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_85097751822a3710d3fec8bb48144d8144742bff/classes.dex" />
     </item>
 
 </items>

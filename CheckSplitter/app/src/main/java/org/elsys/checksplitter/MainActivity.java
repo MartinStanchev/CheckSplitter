@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -13,6 +14,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,15 +30,20 @@ import com.googlecode.tesseract.android.TessBaseAPI;
 import org.elsys.checksplitter.tools.RequestPermissionsToolImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends Activity implements ActivityCompat.OnRequestPermissionsResultCallback  {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     static final int PHOTO_REQUEST_CODE = 1;
+    private static final int ACTIVITY_SELECT_IMAGE = 2;
     private TessBaseAPI tessBaseApi;
     TextView textView;
     Uri outputFileUri;
@@ -59,6 +68,17 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
                 }
             });
         }
+        Button pickImg = (Button) findViewById(R.id.gallery_image);
+        if(pickImg != null) {
+            pickImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startGalleryActivity();
+                }
+            });
+        }
+
+
         textView = (TextView) findViewById(R.id.textResult);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -66,6 +86,12 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         }
     }
 
+
+    private void startGalleryActivity() {
+        Intent pickImg = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickImg, ACTIVITY_SELECT_IMAGE);
+    }
 
     /**
      * to get high resolution image from camera
@@ -96,6 +122,11 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         //making photo
         if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             doOCR();
+
+        } else if (requestCode == ACTIVITY_SELECT_IMAGE && resultCode == Activity.RESULT_OK) {
+            outputFileUri = data.getData();
+            System.out.println(outputFileUri);
+            doOCR();
         } else {
             Toast.makeText(this, "ERROR: Image was not obtained.", Toast.LENGTH_SHORT).show();
         }
@@ -103,6 +134,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
 
     private void doOCR() {
         prepareTesseract();
+        System.out.println(outputFileUri);
         startOCR(outputFileUri);
     }
 
@@ -117,7 +149,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         File dir = new File(path);
         if (!dir.exists()) {
             if (!dir.mkdirs()) {
-                Log.e(TAG, "ERROR: Creation of directory " + path + " failed, check does Android Manifest have permission to write to external storage.");
+                Log.e(TAG, "ERROR: Creation of directory " + path + " failed");
             }
         } else {
             Log.i(TAG, "Created directory " + path);
@@ -178,7 +210,10 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         try {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inSampleSize = 4;
-            Bitmap bitmap = BitmapFactory.decodeFile(imgUri.getPath(), options);
+
+            InputStream is = getContentResolver().openInputStream(imgUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            //Bitmap bitmap = BitmapFactory.decodeFile(imgUri.getPath(), options);
 
             result = extractText(bitmap);
 
@@ -201,18 +236,13 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         }
 
         tessBaseApi.init(DATA_PATH, lang);
-//        //if we only want to detect numbers
-//        tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST, "1234567890");
-//
-//        //blackListing
-//        tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, "!@#$%^&*()_+=-qwertyuiop[]}{POIU" +
-//                "YTRWQasdASDfghFGHjklJKLl;L:'\"\\|~`xcvXCVbnmBNM,./<>?");
 
         Log.d(TAG, "Training file loaded");
         tessBaseApi.setImage(bitmap);
         String extractedText = null;
         try {
             extractedText = tessBaseApi.getUTF8Text();
+            System.out.println(tessBaseApi.getWords().getBoxRects());
         } catch (Exception e) {
             Log.e(TAG, "Error in recognizing text.");
         }
