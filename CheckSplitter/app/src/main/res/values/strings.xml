@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TesseractSample</string>
+    <string name="app_name">Check Splitter</string>
+
+    <string name="title_activity_choose_products">ChooseProductsActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_finalize"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="org.elsys.checksplitter.FinalizeActivity">
+
+    <TextView
+        android:text="Total:"
+        android:textColor="#111"
+        android:textSize="14pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@+id/amount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <TextView
+        android:text="TextView"
+        android:textSize="14pt"
+        android:textColor="#111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/amount"
+        android:layout_marginTop="115dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="%"
+        android:textColor="#111"
+        android:textSize="14pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_alignBaseline="@+id/tip_percentage"
+        android:layout_alignBottom="@+id/tip_percentage"
+        android:layout_toRightOf="@+id/tip_percentage"
+        android:layout_toEndOf="@+id/tip_percentage" />
+
+    <TextView
+        android:text="Tip:"
+        android:textColor="#111"
+        android:textSize="14pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="98dp"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="10"
+        android:textSize="14pt"
+        android:gravity="center"
+        android:ems="5"
+        android:id="@+id/tip_percentage"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

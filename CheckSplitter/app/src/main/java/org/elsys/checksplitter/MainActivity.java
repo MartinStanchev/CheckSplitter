@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -15,8 +16,12 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,11 +53,10 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
     TextView textView;
     Uri outputFileUri;
     private static final String lang = "eng+bul";
-    String result = "empty";
     private RequestPermissionsTool requestTool; //for API >=23 only
-
     private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/TesseractSample/";
     private static final String TESSDATA = "tessdata";
+    private int fromDirectory = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +81,6 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
                 }
             });
         }
-
 
         textView = (TextView) findViewById(R.id.textResult);
 
@@ -125,7 +128,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
 
         } else if (requestCode == ACTIVITY_SELECT_IMAGE && resultCode == Activity.RESULT_OK) {
             outputFileUri = data.getData();
-            System.out.println(outputFileUri);
+            fromDirectory = 1;
             doOCR();
         } else {
             Toast.makeText(this, "ERROR: Image was not obtained.", Toast.LENGTH_SHORT).show();
@@ -134,16 +137,9 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
 
     private void doOCR() {
         prepareTesseract();
-        System.out.println(outputFileUri);
         startOCR(outputFileUri);
     }
 
-    /**
-     * Prepare directory on external storage
-     *
-     * @param path
-     * @throws Exception
-     */
     private void prepareDirectory(String path) {
 
         File dir = new File(path);
@@ -207,23 +203,37 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
 
 
     private void startOCR(Uri imgUri) {
-        try {
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inSampleSize = 4;
+            try {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 4;
+                System.out.println(imgUri);
+                Bitmap bitmap = null;
+                String result = null;
+                if (fromDirectory == 1) {
+                    InputStream is = getContentResolver().openInputStream(imgUri);
+                    bitmap = BitmapFactory.decodeStream(is);
+                } else {
+                    bitmap = BitmapFactory.decodeFile(imgUri.getPath(), options);
+                }
 
-            InputStream is = getContentResolver().openInputStream(imgUri);
-            Bitmap bitmap = BitmapFactory.decodeStream(is);
-            //Bitmap bitmap = BitmapFactory.decodeFile(imgUri.getPath(), options);
+                result = extractText(bitmap);
+                //makeClickableNumbers(result);
+                choosePaidProducts(result);
 
-            result = extractText(bitmap);
 
-            textView.setText(result);
-
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-        }
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
     }
 
+    public void choosePaidProducts(String text) {
+        Intent startNewActivityIntent = new Intent(this, ChooseProductsActivity.class);
+//        startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//        startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startNewActivityIntent.putExtra("result", text);
+        startActivity(startNewActivityIntent);
+    }
 
     private String extractText(Bitmap bitmap) {
         try {
@@ -236,13 +246,15 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         }
 
         tessBaseApi.init(DATA_PATH, lang);
+        //tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, "!@#$%^&*()_+=-[]}{" +";:'\"\\|~`/<>?");
+        tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, ",");
+
 
         Log.d(TAG, "Training file loaded");
         tessBaseApi.setImage(bitmap);
         String extractedText = null;
         try {
             extractedText = tessBaseApi.getUTF8Text();
-            System.out.println(tessBaseApi.getWords().getBoxRects());
         } catch (Exception e) {
             Log.e(TAG, "Error in recognizing text.");
         }

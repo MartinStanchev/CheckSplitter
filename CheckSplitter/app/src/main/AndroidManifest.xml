@@ -3,20 +3,18 @@
     package="org.elsys.checksplitter">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    />
     <application
         android:allowBackup="true"
+        android:configChanges="orientation"
         android:icon="@mipmap/ic_launcher"
         android:label="CheckSplitter"
-        android:supportsRtl="true"
-
-        android:configChanges="orientation"
         android:screenOrientation="portrait"
-
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.elsys.checksplitter.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,6 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ChooseProductsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FinalizeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
