@@ -21,7 +21,7 @@ public class FinalizeActivity extends AppCompatActivity {
         final Double amount = i.getExtras().getDouble("finalAmount");
 
         final EditText tip = (EditText) findViewById(R.id.tip_percentage);
-        String tipPercentage = tip.getText().toString();
+        final String tipPercentage = tip.getText().toString();
 
         Double finalAmount = (amount + (amount * (Double.parseDouble(tipPercentage) / 100)));
         final TextView checkAmount = (TextView) findViewById(R.id.amount);
@@ -32,6 +32,10 @@ public class FinalizeActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                 if (i == EditorInfo.IME_ACTION_DONE) {
                     String tipPercent = tip.getText().toString();
+                    if(tipPercent.equals("")) {
+                        tip.setText("0");
+                        tipPercent = tip.getText().toString();
+                    }
 
                     Double finalAmount = (amount + (amount * (Double.parseDouble(tipPercent) / 100)));
                     checkAmount.setText(finalAmount.toString());

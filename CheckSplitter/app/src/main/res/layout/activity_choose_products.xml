@@ -22,12 +22,24 @@
     </Button>
 
     <TextView
+        android:text="Click on the red numbers to add them to your check. When ready click Done."
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="6pt"
+        android:textColor="#111"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Image result will be here"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/done_choosing"
+        android:layout_alignStart="@+id/done_choosing"
+        android:layout_marginTop="14dp" />
 
 </RelativeLayout>

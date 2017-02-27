@@ -82,8 +82,6 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
             });
         }
 
-        textView = (TextView) findViewById(R.id.textResult);
-
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions();
         }

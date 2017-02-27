@@ -62,7 +62,8 @@ public class ChooseProductsActivity extends AppCompatActivity {
                     int start = s.getSpanStart(this);
                     int end = s.getSpanEnd(this);
                     Toast.makeText(getApplicationContext(), s.subSequence(start, end), Toast.LENGTH_SHORT).show();
-                    finalAmount += Double.parseDouble((s.subSequence(start, end)).toString());
+                    String val = (s.subSequence(start, end)).toString().replaceAll("[\\s : , \\t]", "");
+                    finalAmount += Double.parseDouble(val);
                     Log.d(TAG, String.valueOf(finalAmount));
                 }
             };
