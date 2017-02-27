@@ -215,7 +215,6 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
                 }
 
                 result = extractText(bitmap);
-                //makeClickableNumbers(result);
                 choosePaidProducts(result);
 
 
@@ -226,8 +225,6 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
 
     public void choosePaidProducts(String text) {
         Intent startNewActivityIntent = new Intent(this, ChooseProductsActivity.class);
-//        startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//        startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startNewActivityIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startNewActivityIntent.putExtra("result", text);
         startActivity(startNewActivityIntent);
