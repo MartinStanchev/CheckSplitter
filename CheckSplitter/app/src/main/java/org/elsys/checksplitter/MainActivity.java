@@ -52,7 +52,7 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
     private TessBaseAPI tessBaseApi;
     TextView textView;
     Uri outputFileUri;
-    private static final String lang = "eng+bul";
+    private static String lang = "bul";
     private RequestPermissionsTool requestTool; //for API >=23 only
     private static final String DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/TesseractSample/";
     private static final String TESSDATA = "tessdata";
@@ -85,6 +85,26 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions();
         }
+
+        final Button changeLang = (Button) findViewById(R.id.change_lang);
+        changeLang.setTag(1);
+        changeLang.setText("BUL");
+        changeLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int status = (Integer) v.getTag();
+                if(status == 1) {
+                    changeLang.setText("ENG");
+                    lang = "eng";
+                    v.setTag(0);
+                }
+                else if(status == 0) {
+                    changeLang.setText("BUL");
+                    lang = "bul";
+                    v.setTag(1);
+                }
+            }
+        });
     }
 
 
@@ -241,9 +261,6 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
         }
 
         tessBaseApi.init(DATA_PATH, lang);
-        //tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, "!@#$%^&*()_+=-[]}{" +";:'\"\\|~`/<>?");
-        tessBaseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST, ",");
-
 
         Log.d(TAG, "Training file loaded");
         tessBaseApi.setImage(bitmap);
@@ -254,7 +271,8 @@ public class MainActivity extends Activity implements ActivityCompat.OnRequestPe
             Log.e(TAG, "Error in recognizing text.");
         }
         tessBaseApi.end();
-        return extractedText;
+
+        return extractedText.replaceAll(" [^,. a-zA-Z0-9]+ ", "").replaceAll(",", ".");
     }
 
 

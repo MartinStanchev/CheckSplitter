@@ -50,7 +50,7 @@ public class ChooseProductsActivity extends AppCompatActivity {
     }
 
     private void makeClickableNumbers(String text) {
-        String regexPattern = "\\d.[^ ]\\d+";
+        String regexPattern = "\\d+[,.]\\d+";
         final Matcher matcher = Pattern.compile(regexPattern).matcher(text);
         SpannableStringBuilder strBuilder = new SpannableStringBuilder(text);
         while(matcher.find()) {
@@ -63,6 +63,7 @@ public class ChooseProductsActivity extends AppCompatActivity {
                     int end = s.getSpanEnd(this);
                     Toast.makeText(getApplicationContext(), s.subSequence(start, end), Toast.LENGTH_SHORT).show();
                     String val = (s.subSequence(start, end)).toString().replaceAll("[\\s : , \\t]", "");
+                    System.out.println(Double.parseDouble(val));
                     finalAmount += Double.parseDouble(val);
                     Log.d(TAG, String.valueOf(finalAmount));
                 }

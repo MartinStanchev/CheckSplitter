@@ -40,6 +40,8 @@
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/done_choosing"
         android:layout_alignStart="@+id/done_choosing"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="14dp"
+        android:textSize="9pt"
+        android:textColor="#111"/>
 
 </RelativeLayout>
